@@ -47,7 +47,7 @@ h1 {
 img {
  opacity: 0.9;
  filter: drop-shadow(2px 2px 4px gray);
-}
+ }
 
 a {
   color: #fff;
@@ -94,12 +94,14 @@ P {
   align-items: center;
 }
 
-.temp-number {
+.temperature .temp-number {
   margin-right: 3px;
 }
 
-.scale {
+.temperature .scale {
+  position: relative;
   font-size: 22px;
+  top: -10px;
 }
 
 .weather-info {

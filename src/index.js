@@ -1,6 +1,5 @@
 function displayInfos(response) {
 
-
   let cityNow = document.querySelector("h1 .city");
 
   let icon = document.querySelector("#icon-now");
@@ -19,8 +18,9 @@ function displayInfos(response) {
 
   cityNow.innerHTML = response.data.name;
 
-icon.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
-icon.setAttribute("alt", response.data.weather[0].description); 
+  icon.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+  
+  icon.setAttribute("alt", response.data.weather[0].description); 
  
   tempNow.innerHTML = `${Math.round(response.data.main.temp)}`;
 
