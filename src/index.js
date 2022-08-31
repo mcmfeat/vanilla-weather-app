@@ -27,7 +27,7 @@ function displayInfos(response) {
 function cityShow(event) {
   event.preventDefault();
   let cityInput = document.querySelector("#choose-city");
- 
+
   if (cityInput.value != null && cityInput.value != "") {
     let apiKey = "dd3307b558f459294b4bafe6a4fddf7f";
     let cityName = cityInput.value;
@@ -51,7 +51,7 @@ function formDate(date) {
   ];
   let day = days[date.getDay()];
   let hours = date.getHours();
- 
+
   if (hours < 10) {
     hours = `0${hours}`;
   }
@@ -66,7 +66,7 @@ function formDate(date) {
 function setTemp(event) {
   event.preventDefault();
   let tempElement = document.querySelector("#temp-number");
- 
+
   if (event.target.id == "scale-celsius") {
     tempElement.innerHTML = Math.round(`${celsiusTemperature}`);
   } else {
