@@ -45,9 +45,9 @@ h1 {
 }
 
 img {
- opacity: 0.9;
- filter: drop-shadow(2px 2px 4px gray);
- }
+  opacity: 0.9;
+  filter: drop-shadow(2px 2px 4px gray);
+}
 
 a {
   color: #fff;
@@ -113,6 +113,10 @@ P {
   margin: 10px;
 }
 
+.tempMin {
+  color: rgba(220, 220, 220, 0.9);
+}
+
 .more-infos {
   font-size: 14px;
   text-align: right;
@@ -123,4 +127,8 @@ P {
   font-size: 12px;
   font-style: normal;
   padding: 5px 5px 5px 55px;
+}
+
+#icon-prev {
+  width: 50%;
 }
