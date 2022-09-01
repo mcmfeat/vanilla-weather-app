@@ -11,6 +11,7 @@ function displayInfos(response) {
   celsiusTemperature = response.data.main.temp;
 
   cityNow.innerHTML = response.data.name;
+
   icon.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
@@ -74,6 +75,38 @@ function setTemp(event) {
   }
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let days = ["Mon", "Tue", "Wed", "Thu"];
+
+  let forecastHTML = `<div class="row row-cols-4">`;
+
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+      <div class="col-2 icon">
+      <img
+      src="https://openweathermap.org/img/wn/01d@2x.png"
+      alt="Clear"
+      id="icon-prev"
+      class="float-left"
+      />
+      </div>
+        <div class="col-3 day">${day}</div>
+        <div class="col-3 sky">Clear</div>
+        <div class="col-3 tempMaxMin">
+        <span class="tempMax">30º</span> /
+        <span class="tempMin">14º</span>
+        </div>
+  `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 let celsiusTemperature = null;
 
 let date = new Date();
@@ -90,5 +123,5 @@ celsius.addEventListener("click", setTemp);
 let farenheit = document.querySelector("#scale-farenheit");
 farenheit.addEventListener("click", setTemp);
 
-let buttonCurrentLoc = document.querySelector("#current-loc");
-buttonCurrentLoc.addEventListener("click", getCurrentPosition);
+displayForecast();
+
