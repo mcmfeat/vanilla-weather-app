@@ -23,6 +23,9 @@ function displayInfos(response) {
   humidity.innerHTML = ` ${response.data.main.humidity}`;
   wind.innerHTML = ` ${Math.round(response.data.wind.speed)}`;
   cityInput.value = ``;
+
+  getForecast(response.data.coord);
+  /*   changeBackgroundImage(response.data.weather[0].icon); */
 }
 
 function cityShow(event) {
@@ -80,13 +83,13 @@ function displayForecast() {
 
   let days = ["Mon", "Tue", "Wed", "Thu"];
 
-  let forecastHTML = `<div class="row row-cols-4">`;
+  let forecastHTML = `<div class="row">`;
 
   days.forEach(function (day) {
     forecastHTML =
       forecastHTML +
       `
-      <div class="col-2 icon">
+      <div class="col-3 icon">
       <img
       src="https://openweathermap.org/img/wn/01d@2x.png"
       alt="Clear"
@@ -94,8 +97,8 @@ function displayForecast() {
       class="float-left"
       />
       </div>
-        <div class="col-3 day">${day}</div>
-        <div class="col-3 sky">Clear</div>
+        <div class="col-2 day" id="weekday">${day}</div>
+        <div class="col-4 sky" id="sky">Clear</div>
         <div class="col-3 tempMaxMin">
         <span class="tempMax">30º</span> /
         <span class="tempMin">14º</span>
@@ -106,6 +109,23 @@ function displayForecast() {
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
+
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
+/* function changeBackgroundImage(weatherType) {
+  let background = document.querySelector("#container-app");
+
+  if (weatherType === "01d" || weatherType === "02d") {
+    background.style.backgroundImage = "url(../images/day-clear.jpeg)";
+  } else {
+    background.style.backgroundImage = "url(../images/day-clouds.jpg)";
+  }
+} */
 
 let celsiusTemperature = null;
 
@@ -124,4 +144,3 @@ let farenheit = document.querySelector("#scale-farenheit");
 farenheit.addEventListener("click", setTemp);
 
 displayForecast();
-

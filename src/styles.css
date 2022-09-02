@@ -72,7 +72,7 @@ P {
   border: 2px solid rgba(168, 168, 168, 0.8);
   border-radius: 5%;
   margin: 0 auto;
-  background-image: url(../images/clear-sky.jpeg);
+  background-image: url(../images/day-clear\ -\ 1000x750.jpeg);
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -117,6 +117,11 @@ P {
   color: rgba(220, 220, 220, 0.9);
 }
 
+.row {
+  align-items: baseline;
+  margin: 0 5%;
+}
+
 .more-infos {
   font-size: 14px;
   text-align: right;
@@ -130,5 +135,5 @@ P {
 }
 
 #icon-prev {
-  width: 50%;
+  width: 30%;
 }
