@@ -28,6 +28,12 @@ function displayInfos(response) {
   /*   changeBackgroundImage(response.data.weather[0].icon); */
 }
 
+function search(city) {
+  let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayInfos);
+}
+
 function cityShow(event) {
   event.preventDefault();
   let cityInput = document.querySelector("#choose-city");
@@ -40,6 +46,17 @@ function cityShow(event) {
     axios.get(url).then(displayInfos);
   } else {
     alert(`You need to choose a city`);
+  }
+}
+
+function setTemp(event) {
+  event.preventDefault();
+  let tempElement = document.querySelector("#temp-number");
+
+  if (event.target.id == "scale-celsius") {
+    tempElement.innerHTML = Math.round(`${celsiusTemperature}`);
+  } else {
+    tempElement.innerHTML = Math.round((`${celsiusTemperature}` * 9) / 5 + 32);
   }
 }
 
@@ -67,18 +84,16 @@ function formDate(date) {
   return `${day} ${hours}:${minutes}`;
 }
 
-function setTemp(event) {
-  event.preventDefault();
-  let tempElement = document.querySelector("#temp-number");
-
-  if (event.target.id == "scale-celsius") {
-    tempElement.innerHTML = Math.round(`${celsiusTemperature}`);
-  } else {
-    tempElement.innerHTML = Math.round((`${celsiusTemperature}` * 9) / 5 + 32);
-  }
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
+
   let forecastElement = document.querySelector("#forecast");
 
   let days = ["Mon", "Tue", "Wed", "Thu"];
@@ -110,13 +125,6 @@ function displayForecast() {
   forecastElement.innerHTML = forecastHTML;
 }
 
-function getForecast(coordinates) {
-  console.log(coordinates);
-  let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(displayForecast);
-}
-
 /* function changeBackgroundImage(weatherType) {
   let background = document.querySelector("#container-app");
 
@@ -143,4 +151,5 @@ celsius.addEventListener("click", setTemp);
 let farenheit = document.querySelector("#scale-farenheit");
 farenheit.addEventListener("click", setTemp);
 
+search("Coimbra");
 displayForecast();
