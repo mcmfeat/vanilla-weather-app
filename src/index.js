@@ -49,6 +49,21 @@ function cityShow(event) {
   }
 }
 
+function showPosition(position) {
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
+
+  let apiKey = "dd3307b558f459294b4bafe6a4fddf7f";
+  let units = "metric";
+  let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`;
+
+  axios.get(url).then(displayInfos);
+}
+
+function getCurrentPosition() {
+  navigator.geolocation.getCurrentPosition(showPosition);
+}
+
 function setTemp(event) {
   event.preventDefault();
   let tempElement = document.querySelector("#temp-number");
@@ -153,6 +168,9 @@ h6.innerHTML = formDate(date);
 
 let cityForm = document.querySelector("#search-city");
 cityForm.addEventListener("submit", cityShow);
+
+let buttonCurrentLoc = document.querySelector("#current-loc");
+buttonCurrentLoc.addEventListener("click", getCurrentPosition);
 
 let celsius = document.querySelector("#scale-celsius");
 celsius.addEventListener("click", setTemp);
