@@ -96,7 +96,7 @@ function formDate(date) {
     minutes = `0${minutes}`;
   }
 
-  return `${day} ${hours}:${minutes}`;
+  return `Last updated: ${day} ${hours}:${minutes}`;
 }
 
 function getForecast(coordinates) {
@@ -115,6 +115,7 @@ function formatDay(timestamp) {
 
 function displayForecast(response) {
   let forecast = response.data.daily;
+  console.log(response.data.daily);
 
   let forecastElement = document.querySelector("#forecast");
 
@@ -153,9 +154,23 @@ function displayForecast(response) {
   let background = document.querySelector("#container-app");
 
   if (weatherType === "01d" || weatherType === "02d") {
-    background.style.backgroundImage = "url(../images/day-clear.jpeg)";
-  } else {
+    background.style.backgroundImage = "url(../images/day-clear.jpg)";
+  } else if (weatherType === "03d" || weatherType === "04d") {
     background.style.backgroundImage = "url(../images/day-clouds.jpg)";
+  } else if (weatherType === "09d" || weatherType === "10d") {
+    background.style.backgroundImage = "url(../images/day-rain.jpg)";
+  } else if (weatherType === "11d"|| weatherType === "11n")) {
+    background.style.backgroundImage = "url(../images/storm.jpg)";
+  } else if (weatherType === "13d" || weatherType === "13n")) {
+    background.style.backgroundImage = "url(../images/snow.jpg)";
+  } else if (weatherType === "50d" || weatherType === "50n")) {
+    background.style.backgroundImage = "url(../images/mist.jpg)";
+  } else if (weatherType === "01n" || weatherType === "02n") {
+    background.style.backgroundImage = "url(../images/night-clear.jpg)";
+  } else if (weatherType === "03n" || weatherType === "04n") {
+    background.style.backgroundImage = "url(../images/night-clouds.jpg)";
+  } else if (weatherType === "09n" || weatherType === "10n") {
+    background.style.backgroundImage = "url(../images/night-rain.jpg)";
   }
 } */
 
