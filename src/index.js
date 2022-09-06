@@ -152,7 +152,11 @@ function displayForecast(response) {
 function changeBackgroundImage(weatherType) {
   let containerApp = document.querySelector("#container-app");
 
-  if (weatherType === "03d" || weatherType === "04d") {
+  containerApp.setAttribute("class", "container-app");
+
+  if (weatherType === "01d" || weatherType === "02d") {
+    containerApp.classList.add("day-clear");
+  } else if (weatherType === "03d" || weatherType === "04d") {
     containerApp.classList.add("day-clouds");
   } else if (weatherType === "09d" || weatherType === "10d") {
     containerApp.classList.add("day-rain");
