@@ -175,3 +175,13 @@ P {
 #icon-prev {
   width: 30%;
 }
+
+#sky {
+font-style: oblique;
+}
+
+#sky::first-letter {
+  text-transform: uppercase;
+}
+
+ 

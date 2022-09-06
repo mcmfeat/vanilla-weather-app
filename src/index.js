@@ -115,13 +115,13 @@ function formatDay(timestamp) {
 
 function displayForecast(response) {
   let forecast = response.data.daily;
-
+  
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
 
   forecast.forEach(function (forecastDay, index) {
-    if (index < 4) {
+    if (index > 0 && index < 5) {
       forecastHTML =
         forecastHTML +
         `
@@ -136,7 +136,7 @@ function displayForecast(response) {
       />
       </div>
         <div class="col-2 day" id="weekday">${formatDay(forecastDay.dt)}</div>
-        <div class="col-4 sky" id="sky">Clear</div>
+        <div class="col-4 sky" id="sky">${forecastDay.weather[0].description}</div>
         <div class="col-3 tempMaxMin">
         <span class="tempMax">${Math.round(forecastDay.temp.max)}º</span> /
         <span class="tempMin">${Math.round(forecastDay.temp.min)}º</span>
@@ -175,18 +175,6 @@ function changeBackgroundImage(weatherType) {
   }
 }
 
-/* function changeIcons(iconType) {
-  let iconWeather = document.querySelector("#icon-now");
-
-  if (iconType === "http://openweathermap.org/img/wn/01d@2x.png") {
-    iconWeather.innerHTML = `<i class="fa-solid fa-sun"></i>`;
-  } else if (iconType === "http://openweathermap.org/img/wn/02d@2x.png") {
-    iconWeather.innerHTML = `<i class="fa-solid fa-cloud-sun"></i>`;
-  } else if (iconType === "http://openweathermap.org/img/wn/10d@2x.png") {
-    iconWeather.innerHTML = `<i class="fa-solid fa-cloud-sun-rain"></i>`;
-  }
-} */
-
 let celsiusTemperature = null;
 
 let date = new Date();
@@ -207,8 +195,3 @@ let farenheit = document.querySelector("#scale-farenheit");
 farenheit.addEventListener("click", setTemp);
 
 search("Coimbra");
-/* changeIcons(); */
-
-/* let teste = document.querySelector("#teste");
-teste.innerHTML = `<i class="fa-solid fa-cloud-sun-rain"> </i>`;
- */
