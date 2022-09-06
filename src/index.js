@@ -25,7 +25,7 @@ function displayInfos(response) {
   cityInput.value = ``;
 
   getForecast(response.data.coord);
-  /*   changeBackgroundImage(response.data.weather[0].icon); */
+  changeBackgroundImage(response.data.weather[0].icon);
 }
 
 function search(city) {
@@ -96,7 +96,7 @@ function formDate(date) {
     minutes = `0${minutes}`;
   }
 
-  return `Last updated: ${day} ${hours}:${minutes}`;
+  return `<small>Last updated:</small> ${day} ${hours}:${minutes}`;
 }
 
 function getForecast(coordinates) {
@@ -115,7 +115,6 @@ function formatDay(timestamp) {
 
 function displayForecast(response) {
   let forecast = response.data.daily;
-  console.log(response.data.daily);
 
   let forecastElement = document.querySelector("#forecast");
 
@@ -150,27 +149,37 @@ function displayForecast(response) {
   forecastElement.innerHTML = forecastHTML;
 }
 
-/* function changeBackgroundImage(weatherType) {
-  let background = document.querySelector("#container-app");
+function changeBackgroundImage(weatherType) {
+  let containerApp = document.querySelector("#container-app");
 
-  if (weatherType === "01d" || weatherType === "02d") {
-    background.style.backgroundImage = "url(../images/day-clear.jpg)";
-  } else if (weatherType === "03d" || weatherType === "04d") {
-    background.style.backgroundImage = "url(../images/day-clouds.jpg)";
+  if (weatherType === "03d" || weatherType === "04d") {
+    containerApp.classList.add("day-clouds");
   } else if (weatherType === "09d" || weatherType === "10d") {
-    background.style.backgroundImage = "url(../images/day-rain.jpg)";
-  } else if (weatherType === "11d"|| weatherType === "11n")) {
-    background.style.backgroundImage = "url(../images/storm.jpg)";
-  } else if (weatherType === "13d" || weatherType === "13n")) {
-    background.style.backgroundImage = "url(../images/snow.jpg)";
-  } else if (weatherType === "50d" || weatherType === "50n")) {
-    background.style.backgroundImage = "url(../images/mist.jpg)";
+    containerApp.classList.add("day-rain");
+  } else if (weatherType === "11d" || weatherType === "11n") {
+    containerApp.classList.add("storm");
+  } else if (weatherType === "13d" || weatherType === "13n") {
+    containerApp.classList.add("snow");
+  } else if (weatherType === "50d" || weatherType === "50n") {
+    containerApp.classList.add("mist");
   } else if (weatherType === "01n" || weatherType === "02n") {
-    background.style.backgroundImage = "url(../images/night-clear.jpg)";
+    containerApp.classList.add("night-clear");
   } else if (weatherType === "03n" || weatherType === "04n") {
-    background.style.backgroundImage = "url(../images/night-clouds.jpg)";
+    containerApp.classList.add("night-clouds");
   } else if (weatherType === "09n" || weatherType === "10n") {
-    background.style.backgroundImage = "url(../images/night-rain.jpg)";
+    containerApp.classList.add("night-rain");
+  }
+}
+
+/* function changeIcons(iconType) {
+  let iconWeather = document.querySelector("#icon-now");
+
+  if (iconType === "http://openweathermap.org/img/wn/01d@2x.png") {
+    iconWeather.innerHTML = `<i class="fa-solid fa-sun"></i>`;
+  } else if (iconType === "http://openweathermap.org/img/wn/02d@2x.png") {
+    iconWeather.innerHTML = `<i class="fa-solid fa-cloud-sun"></i>`;
+  } else if (iconType === "http://openweathermap.org/img/wn/10d@2x.png") {
+    iconWeather.innerHTML = `<i class="fa-solid fa-cloud-sun-rain"></i>`;
   }
 } */
 
@@ -194,4 +203,8 @@ let farenheit = document.querySelector("#scale-farenheit");
 farenheit.addEventListener("click", setTemp);
 
 search("Coimbra");
-displayForecast();
+/* changeIcons(); */
+
+/* let teste = document.querySelector("#teste");
+teste.innerHTML = `<i class="fa-solid fa-cloud-sun-rain"> </i>`;
+ */

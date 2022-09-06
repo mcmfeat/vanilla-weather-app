@@ -62,6 +62,10 @@ h6 {
   text-align: center;
 }
 
+small {
+  color: rgba(255, 255, 255, 0.7);
+}
+
 P {
   font-size: larger;
   font-style: oblique;
@@ -69,6 +73,7 @@ P {
 
 .container-app {
   width: 60%;
+  min-width: 350px;
   border: 2px solid rgba(168, 168, 168, 0.8);
   border-radius: 5%;
   margin: 0 auto;
@@ -128,10 +133,42 @@ P {
   margin: 5px 70px 5px 5px;
 }
 
-.marines {
+.coder {
   font-size: 12px;
   font-style: normal;
   padding: 5px 5px 5px 55px;
+}
+
+.day-clouds {
+  background-image: url(../images/day-clouds.jpg);
+}
+
+.day-rain {
+  background-image: url(../images/day-rain.jpg);
+}
+
+.mist {
+  background-image: url(../images/mist.jpg);
+}
+
+.night-clear {
+  background-image: url(../images/night-clear.jpg);
+}
+
+.night-clouds {
+  background-image: url(../images/night-clouds.jpg);
+}
+
+.night-rain {
+  background-image: url(../images/night-rain.jpg);
+}
+
+.snow {
+  background-image: url(../images/snow.jpg);
+}
+
+.storm {
+  background-image: url(../images/storm.jpg);
 }
 
 #icon-prev {
