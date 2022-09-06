@@ -115,7 +115,7 @@ function formatDay(timestamp) {
 
 function displayForecast(response) {
   let forecast = response.data.daily;
-  
+
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
@@ -136,10 +136,12 @@ function displayForecast(response) {
       />
       </div>
         <div class="col-2 day" id="weekday">${formatDay(forecastDay.dt)}</div>
-        <div class="col-4 sky" id="sky">${forecastDay.weather[0].description}</div>
+        <div class="col-4 sky" id="sky">${
+          forecastDay.weather[0].description
+        }</div>
         <div class="col-3 tempMaxMin">
         <span class="tempMax">${Math.round(forecastDay.temp.max)}º</span> /
-        <span class="tempMin">${Math.round(forecastDay.temp.min)}º</span>
+        <span class="tempMin">${Math.round(forecastDay.temp.min)}º C</span>
         </div>
   `;
     }
@@ -151,11 +153,13 @@ function displayForecast(response) {
 
 function changeBackgroundImage(weatherType) {
   let containerApp = document.querySelector("#container-app");
+  let body = document.body;
 
   containerApp.setAttribute("class", "container-app");
 
   if (weatherType === "01d" || weatherType === "02d") {
     containerApp.classList.add("day-clear");
+    body;
   } else if (weatherType === "03d" || weatherType === "04d") {
     containerApp.classList.add("day-clouds");
   } else if (weatherType === "09d" || weatherType === "10d") {

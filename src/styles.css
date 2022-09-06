@@ -74,7 +74,7 @@ P {
 .container-app {
   width: 60%;
   min-width: 350px;
-  border: 2px solid rgba(168, 168, 168, 0.8);
+  border: 2px solid rgba(168, 168, 168, 0.7);
   border-radius: 5%;
   margin: 0 auto;
   background-image: url(../images/day-clear.jpg);
@@ -177,11 +177,9 @@ P {
 }
 
 #sky {
-font-style: oblique;
+  font-style: oblique;
 }
 
 #sky::first-letter {
   text-transform: uppercase;
 }
-
- 
